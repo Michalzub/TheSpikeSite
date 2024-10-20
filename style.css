@@ -1,0 +1,163 @@
+:root {
+    --main-page-color: #FF4655;
+    --home-container-color: #0E1923;
+    --home-box-color: #081017;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--main-page-color);
+    justify-content: center;
+}
+
+.navbar-brand {
+    font-family: "Rubik", sans-serif;
+    font-size: 1.5rem;
+}
+
+nav{
+    background: black;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-items{
+    font-family: "Rubik", sans-serif;
+}
+.nav-item{
+    padding-right: 15px;
+    padding-left: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-item:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/*menu button + line som našiel*/
+.menu-button {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 15px;
+}
+.line {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.logo{
+    padding: 0 2rem;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    white-space: nowrap;
+}
+
+.main-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--home-container-color);
+    padding: 20px 30px;
+    max-width: 1000px;
+    margin: 50px auto;
+    border-radius: 10px 10px 0 0;
+    color: white;
+}
+
+.home-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: var(--home-box-color);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 30px 30px;
+    max-width: 900px;
+    width: 100%;
+    align-items: center;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+.welcome-message{
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.link-word{
+    color: var(--main-page-color);
+}
+
+.search-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+}
+
+.search-input{
+    width: 500px;
+    height: 40px;
+    margin-right: 5px;
+    border: 2px solid white;
+    outline: none;
+    background: var(--home-box-color);
+    font-family: "Rubik", sans-serif;
+    color: white;
+}
+.search-input:focus{
+    border: 2px solid var(--main-page-color);
+}
+
+.search-button {
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    height: 40px;
+    width: 120px;
+    outline: none;
+    font-size: 1.2rem;
+    background-color: var(--main-page-color);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid var(--main-page-color);
+}
+.search-button:active{
+    border: 2px solid white;
+}
+
+
+@media (max-width: 768px) {
+    .nav-items {
+        display: none;
+    }
+    .menu-button {
+        display: flex;
+    }
+}
