@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <nav>
@@ -18,22 +18,25 @@
         <span class="line"></span>
     </button>
     <div class="nav-items">
-        <a class="nav-item" href = "#">Home</a>
-        <a class="nav-item" href = "#">Agents</a>
-        <a class="nav-item" href = "#">Maps</a>
-        <a class="nav-item" href = "#">Weapons</a>
+        <a class="nav-item active" href = "index.html">Home</a>
+        <a class="nav-item" href = "agents.html">Agents</a>
+        <a class="nav-item" href = "maps.html">Maps</a>
+        <a class="nav-item" href = "weapons.html">Weapons</a>
     </div>
 </nav>
 <div class="main-page">
     <div class="home-container">
         <h1>Home</h1>
         <div class="home-box">
-            <img src="Valorant_logo_-_pink_color_version.png" width="150px" height="auto">
+            <img src="../images/Valorant_logo_-_pink_color_version.png" width="150px" height="auto">
             <p>
                 <span class="welcome-message"> Welcome to The Spike Site!</span> <br>
-                The Valorant encyclopedia for all your needs regarding valorant agents maps and weapons.<br>
+                The Valorant encyclopedia for all your needs regarding valorant
+                <a class="link-word" href="agents.html">agents</a>,
+                <a class="link-word" href="maps.html">maps</a> and
+                <a class="link-word" href="weapons.html">weapons</a>.<br>
                 Valorant is a competitive character-based 5v5 tactical shooter.
-                Set in a near-future Earth, you team up with 4 other players against 5 enemies in round-based combat with an <a class="link-word" href="#">agent</a> of your choice.
+                Set in a near-future Earth,     you team up with 4 other players against 5 enemies in round-based combat with an agent of your choice.
                 Creativity is your greatest weapon.
             </p>
             <div class="search-bar">
@@ -44,12 +47,12 @@
         <div class="home-box">
             <h2>Agents</h2>
             <div class="item-preview-grid">
-                <button class="icon-button" id="jett">
+                <button class="icon-button" id="jett" onclick="window.location.href='agent-page.html'">
                     <span class="button-text">Jett</span>
                 </button>
                 <button class="icon-button" id="phoenix">Phoenix</button>
                 <button class="icon-button" id="viper">Viper</button>
-                <button class="icon-button" id="moreAgents">More</button>
+                <button class="icon-button" id="moreAgents" onclick="window.location.href='agents.html'">More</button>
             </div>
         </div>
         <div class="home-box">
@@ -58,7 +61,7 @@
                 <button class="icon-button" id="haven">Haven</button>
                 <button class="icon-button" id="bind">Bind</button>
                 <button class="icon-button" id="split">Split</button>
-                <button class="icon-button" id="moreMaps">More</button>
+                <button class="icon-button" id="moreMaps" onclick="window.location.href='maps.html'">More</button>
             </div>
         </div>
         <div class="home-box">
@@ -67,7 +70,7 @@
                 <button class="icon-button" id="vandal">Vandal</button>
                 <button class="icon-button" id="phantom">Phantom</button>
                 <button class="icon-button" id="operator">Operator</button>
-                <button class="icon-button" id="moreWeapons">More</button>
+                <button class="icon-button" id="moreWeapons" onclick="window.location.href='weapons.html'">More</button>
             </div>
         </div>
     </div>

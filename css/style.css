@@ -8,14 +8,13 @@
     box-sizing: border-box;
 }
 
+.centered{
+    text-align: center;
+}
+
 body{
     background: var(--main-page-color);
     justify-content: center;
-}
-
-.navbar-brand {
-    font-family: "Rubik", sans-serif;
-    font-size: 1.5rem;
 }
 
 nav{
@@ -37,6 +36,11 @@ nav{
 
 .nav-item:hover {
     text-decoration: underline; /* Underline on hover */
+}
+
+.nav-item.active {
+    font-weight: bold;
+    color: var(--main-page-color);
 }
 
 /*menu button + line som našiel*/
@@ -187,6 +191,44 @@ h1{
     color: white;
 }
 
+.agent-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 190px);
+    justify-content: center;
+    gap: 5px;
+}
+.agent-preview{
+    position: relative;
+    background: var(--home-box-color);
+    height: 390px;
+    overflow: hidden;
+}
+
+.agent-preview:hover{
+    border: 3px solid white;
+}
+
+.agent-preview-background{
+    position: absolute; /* Position the image absolutely */
+    top: 50%; /* Move down to the center */
+    left: 40%; /* Move right to the center */
+    width: auto; /* Auto width */
+    height: 500px; /* Auto height */
+    transform: translate(-50%, -50%); /* Offset the image to center it */
+    object-fit: cover; /* Cover the container while keeping the aspect ratio */
+    z-index: 1;
+}
+
+.agent-preview-image{
+    position: absolute; /* Position the image absolutely */
+    top: 50%; /* Move down to the center */
+    left: 40%; /* Move right to the center */
+    width: auto; /* Auto width */
+    height: 500px; /* Auto height */
+    transform: translate(-50%, -50%); /* Offset the image to center it */
+    object-fit: cover; /* Cover the container while keeping the aspect ratio */
+    z-index: 2;
+}
 
 @media (max-width: 768px) {
     .nav-items {
