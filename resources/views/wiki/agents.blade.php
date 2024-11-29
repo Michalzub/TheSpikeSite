@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Spike Site</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset("/../css/style.css") }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<nav>
+    <div class="logo">The Spike Site</div>
+    <button class="menu-button" id="menu-btn" aria-label="Toggle Menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </button>
+    <div class="nav-items">
+        <a class="nav-item" href = "index.html">Home</a>
+        <a class="nav-item active" href = "agents.html">Agents</a>
+        <a class="nav-item" href = "maps.html">Maps</a>
+        <a class="nav-item" href = "weapons.html">Weapons</a>
+    </div>
+</nav>
+<div class="main-page">
+    <div class="home-container">
+        <h1 class="centered">Agents</h1>
+        <p class="centered">Agents are the playable characters in VALORANT, representing an agent of the VALORANT Protocol. Each agent serves as a different class with four abilities.</p>
+        <div class="agent-grid">
+            <div class="agent-preview agent-1">
+                <img class="agent-preview-image" src="{{ asset("/../images/jettfullportrait.png") }}"
+                     onclick="window.location.href='agent-page.html'" height="390"
+                     alt="Jett"
+                >
+                <img class="agent-preview-background" src="{{ asset("/../images/jettfullportraitbackground.png") }}"
+                     height="390" alt="Jett background"
+                >
+            </div>
+            <div class="agent-preview agent-2">
+            </div>
+            <div class="agent-preview agent-3">
+            </div>
+            <div class="agent-preview agent-4">
+            </div>
+            <div class="agent-preview agent-5">
+            </div>
+            <div class="agent-preview agent-6">
+            </div>
+            <div class="agent-preview agent-7">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
