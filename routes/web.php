@@ -3,8 +3,9 @@
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\SpikeSiteController;
 
-Route::redirect('/', '/note')->name('dashboard');
+Route::redirect('/', '/wiki')->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group( function () {
     /*
@@ -16,8 +17,14 @@ Route::middleware(['auth', 'verified'])->group( function () {
     Route::post('/note/{note}', [NoteController::class, 'update'])->name('note.update');
     Route::delete('/note/{note}', [NoteController::class, 'destroy'])->name('note.destroy');
     */
-    Route::resource('note', NoteController::class);
+    //Route::resource('note', NoteController::class);
+
+
 });
+Route::get('/', [SpikeSiteController::class, 'index'])->name('wiki.index');
+Route::get('/agents', [SpikeSiteController::class, 'agents'])->name('wiki.agents');
+Route::get('/maps', [SpikeSiteController::class, 'maps'])->name('wiki.maps');
+Route::get('/weapons', [SpikeSiteController::class, 'weapons'])->name('wiki.weapons');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
