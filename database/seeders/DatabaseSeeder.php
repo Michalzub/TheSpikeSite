@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
+use App\Models\Discussion;
 use App\Models\Note;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -24,5 +26,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Note::factory(100)->create();
+
+        Discussion::factory(100)->create();
+
+        Comment::factory(100)->create();
     }
 }
