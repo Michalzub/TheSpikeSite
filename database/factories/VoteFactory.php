@@ -20,7 +20,7 @@ class VoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => User::all()->random()->id,
             'post_type' => $this->faker->randomElement(['discussion', 'comment']),
             'post_id' => $this->faker->randomElement([Discussion::factory(), Comment::factory()]),
             'vote_type' => $this->faker->boolean(),

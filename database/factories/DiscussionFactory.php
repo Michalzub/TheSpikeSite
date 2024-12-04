@@ -17,7 +17,7 @@ class DiscussionFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'text' => $this->faker->paragraph(),
-            'author_id' => User::factory(),
+            'author_id' => User::all()->random()->id,
         ];
     }
 }

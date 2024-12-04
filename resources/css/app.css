@@ -27,6 +27,13 @@ nav.topbar{
 nav.topbar .nav-items{
     font-family: "Rubik", sans-serif;
 }
+
+.nav-items form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
 nav.topbar .nav-item{
     padding-right: 15px;
     padding-left: 15px;
@@ -375,6 +382,30 @@ h1{
 .pagination-container{
     display: flex;
     justify-content: center;
+}
+
+.discussion-preview-actions{
+    display: flex;
+    justify-content: space-between;
+}
+
+.discussion-preview-edit-action{
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+}
+
+.discussion-preview-vote-action{
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+}
+
+
+.discussion-preview-edit-actions form{
+    display: inline;
 }
 
 @media (max-width: 768px) {

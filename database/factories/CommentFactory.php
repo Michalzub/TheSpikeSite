@@ -20,9 +20,9 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'discussion_id' => Discussion::factory(),
+            'discussion_id' => Discussion::all()->random()->id,
             'parent_id' => $this->faker->randomElement([null, Comment::factory()]),
-            'author_id' => User::factory(),
+            'author_id' => User::all()->random()->id,
             'text' => $this->faker->sentence(),
 
         ];

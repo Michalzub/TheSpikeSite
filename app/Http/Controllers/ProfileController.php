@@ -21,6 +21,10 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function login() {
+        return view('forum.index');
+    }
+
     /**
      * Update the user's profile information.
      */
