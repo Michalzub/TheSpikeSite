@@ -1,4 +1,4 @@
-<nav>
+<nav class="topbar">
     <div class="logo">The Spike Site</div>
     <button class="menu-button" id="menu-btn" aria-label="Toggle Menu">
         <span class="line"></span>

@@ -27,6 +27,8 @@
 
                 </div>
             @endforeach
+            {{ $posts->links('pagination::bootstrap-5', ['class' => 'pagination-nav']) }}
+
         </div>
     </div>
 

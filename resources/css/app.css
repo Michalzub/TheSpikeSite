@@ -17,28 +17,28 @@ body{
     justify-content: center;
 }
 
-nav{
+nav.topbar{
     background: black;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.nav-items{
+nav.topbar .nav-items{
     font-family: "Rubik", sans-serif;
 }
-.nav-item{
+nav.topbar .nav-item{
     padding-right: 15px;
     padding-left: 15px;
     text-decoration: none;
     color: white;
 }
 
-.nav-item:hover {
+nav.topbar .nav-item:hover {
     text-decoration: underline;
 }
 
-.nav-item.active {
+nav.topbar .nav-item.active {
     font-weight: bold;
     color: var(--main-page-color);
 }
@@ -361,6 +361,20 @@ h1{
     width: 100%;
     max-width: 1000px;
     align-items: start;
+}
+
+.pagination-nav{
+    margin-top: 20px;
+    color: white;
+}
+
+.pagination-text{
+    color: white;
+}
+
+.pagination-container{
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {

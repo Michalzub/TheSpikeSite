@@ -16,19 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
+        $user = User::factory()->create([
             'id' => 1,
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
 
-        Note::factory(100)->create();
+        $discussions = Discussion::factory(20)->create([
+            'author_id' => $user->id,
+        ]);
 
-        Discussion::factory(100)->create();
-
-        Comment::factory(100)->create();
+        Comment::factory(30)->create([
+            'author_id' => $user->id,
+            'discussion_id' => $discussions->random()->id,
+        ]);
     }
 }

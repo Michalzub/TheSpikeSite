@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
  */
-class CommentFactory extends Factory
+class VoteFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,11 +20,10 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'discussion_id' => Discussion::factory(),
-            'parent_id' => $this->faker->randomElement([null, Comment::factory()]),
-            'author_id' => User::factory(),
-            'text' => $this->faker->sentence(),
-
+            'user_id' => User::factory(),
+            'post_type' => $this->faker->randomElement(['discussion', 'comment']),
+            'post_id' => $this->faker->randomElement([Discussion::factory(), Comment::factory()]),
+            'vote_type' => $this->faker->boolean(),
         ];
     }
 }

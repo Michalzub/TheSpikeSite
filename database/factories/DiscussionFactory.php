@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DiscussionFactory extends Factory
@@ -14,10 +15,9 @@ class DiscussionFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->name(),
-            'text' => fake()->realText(),
-            'updoots' => 0,
-            'author_id' => 1,
+            'title' => $this->faker->sentence(),
+            'text' => $this->faker->paragraph(),
+            'author_id' => User::factory(),
         ];
     }
 }

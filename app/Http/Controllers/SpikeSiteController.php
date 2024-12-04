@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class SpikeSiteController extends Controller
 {
@@ -20,7 +21,13 @@ class SpikeSiteController extends Controller
      */
     public function agents()
     {
-        return view('wiki.agents');
+        $response = Http::get('https://valorant-api.com/v1/agents',['isPlayableCharacter' => 'true']);
+        $agents = $response->json()['data'];
+        return view('wiki.agents', compact('agents'));
+    }
+
+    public function agentspage(Request $request) {
+        $response = Http::get('https://valorant-api.com/v1/agents/' . $request->id);
     }
 
     public function maps()
