@@ -7,7 +7,7 @@ use \App\Http\Controllers\SpikeSiteController;
 
 Route::redirect('/dashboard', '/');
 
-Route::middleware(['auth', 'verified'])->group( function () {
+Route::middleware(['auth'])->group( function () {
     Route::get('/discussion/create',[ForumController::class, 'create'])->name('discussion.create');
     Route::get('/discussion/{discussion}/edit',[ForumController::class, 'edit'])->name('discussion.edit');
     Route::post('/discussion', [ForumController::class, 'store'])->name('discussion.store');
