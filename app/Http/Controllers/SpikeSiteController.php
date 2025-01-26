@@ -21,22 +21,50 @@ class SpikeSiteController extends Controller
      */
     public function agents()
     {
-        $response = Http::get('https://valorant-api.com/v1/agents',['isPlayableCharacter' => 'true']);
-        $agents = $response->json()['data'];
+        $agents = session('agents');
+
+        if (!$agents) {
+            $response = Http::get('https://valorant-api.com/v1/agents', ['isPlayableCharacter' => 'true']);
+            $agents = $response->json()['data'];
+
+            session(['agents' => $agents]);
+        }
+
         return view('wiki.agents', compact('agents'));
     }
 
-    public function agentspage(Request $request) {
-        $response = Http::get('https://valorant-api.com/v1/agents/' . $request->id);
+    public function agentDetails($name)
+    {
+        $agents = session('agents');
+
+        $agent = collect($agents)->firstWhere('displayName', ucfirst(strtolower($name)));
+
+        if (!$agent) {
+            abort(404, 'Agent not found');
+        }
+
+        return view('wiki.agents-page', compact('agent'));
+    }
+
+    public function weapons()
+    {
+        $weapons = session('weapons');
+
+        if (!$weapons) {
+            $response = Http::get('https://valorant-api.com/v1/weapons');
+
+            $weapons = collect($response->json()['data'])->map(function($weapon) {
+                unset($weapon['skins']);
+                return $weapon;
+            });
+            session(['weapons' => $weapons]);
+        }
+
+        return view('wiki.weapons', compact('weapons'));
     }
 
     public function maps()
     {
         return view('wiki.maps');
-    }
-
-    public function weapons()
-    {
-        return view('wiki.weapons');
     }
 }

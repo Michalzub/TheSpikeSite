@@ -344,8 +344,6 @@ h1{
     .item-preview-grid .icon-button:nth-child(3) {
         display: none;
     }
-    .agent-grid
-
 }
 
 @media (max-width: 880px) and (min-width: 551px) {
@@ -354,6 +352,10 @@ h1{
     }
     .item-preview-grid .icon-button:nth-child(2) {
         display: none;
+    }
+    .agent-info-page {
+        flex-direction: column;
+        align-items: center;
     }
 }
 @media (max-width: 550px) {

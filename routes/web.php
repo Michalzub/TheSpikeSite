@@ -18,6 +18,7 @@ Route::middleware(['auth'])->group( function () {
 });
 Route::get('/', [SpikeSiteController::class, 'index'])->name('wiki.index');
 Route::get('/agents', [SpikeSiteController::class, 'agents'])->name('wiki.agents');
+Route::get('/agents/{name}', [SpikeSiteController::class, 'agentDetails'])->name('wiki.agent.details');
 Route::get('/maps', [SpikeSiteController::class, 'maps'])->name('wiki.maps');
 Route::get('/weapons', [SpikeSiteController::class, 'weapons'])->name('wiki.weapons');
 

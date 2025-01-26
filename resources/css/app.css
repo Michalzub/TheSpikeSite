@@ -218,7 +218,7 @@ h1{
 .agent-preview-background{
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
     z-index: 1;
@@ -227,7 +227,7 @@ h1{
 .agent-preview-image{
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
     z-index: 2;
@@ -307,6 +307,18 @@ h1{
 .ability-info{
     display: flex;
     align-items: center;
+}
+
+.abilities-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Add space between ability items */
+}
+
+.ability-info {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Full width by default */
 }
 
 .ability-name{
@@ -443,6 +455,8 @@ h1{
 
 }
 
+
+
 @media (max-width: 880px) and (min-width: 551px) {
     .item-preview-grid .icon-button:nth-child(3) {
         display: none;
@@ -460,5 +474,15 @@ h1{
     }
     .item-preview-grid .icon-button:nth-child(1) {
         display: none;
+    }
+
+    .ability-info {
+        flex-direction: column; /* Stack image above text */
+        align-items: center;
+        text-align: center;
+    }
+
+    .ability-image {
+        margin-bottom: 10px; /* Optional: adds space between image and text */
     }
 }
