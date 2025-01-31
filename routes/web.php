@@ -20,7 +20,9 @@ Route::get('/', [SpikeSiteController::class, 'index'])->name('wiki.index');
 Route::get('/agents', [SpikeSiteController::class, 'agents'])->name('wiki.agents');
 Route::get('/agents/{name}', [SpikeSiteController::class, 'agentDetails'])->name('wiki.agent.details');
 Route::get('/maps', [SpikeSiteController::class, 'maps'])->name('wiki.maps');
+Route::get('/maps/{name}', [SpikeSiteController::class, 'mapDetails'])->name('wiki.maps.details');
 Route::get('/weapons', [SpikeSiteController::class, 'weapons'])->name('wiki.weapons');
+Route::get('/weapons/{name}', [SpikeSiteController::class, 'weaponDetails'])->name('wiki.weapon.details');
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
 Route::get('/discussion/{discussion}', [ForumController::class, 'show'])->name('discussion.show');
