@@ -43,11 +43,18 @@ class ForumController extends Controller
         $data = $request->validate([
             'title' => ['required', 'string', 'max:30'],
             'text' => ['required', 'string'],
+            'image' => ['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'],
         ]);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+        }
 
         $discussion = Discussion::create([
             'title' => $data['title'],
             'text' => $data['text'],
+            'image' => $imagePath,
             'author_id' => auth()->id(),
         ]);
 
@@ -82,6 +89,7 @@ class ForumController extends Controller
         $data = $request->validate([
             'title' => ['required', 'string', 'max:30'],
             'text' => ['required', 'string'],
+            'image' => ['nullable','image','mimes:jpeg,png,jpg,gif','max:2048'],
         ]);
 
         $discussion->update($data);

@@ -495,13 +495,17 @@ h1{
     display: inline;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 824px) {
     .nav-items {
         display: none;
     }
+
     .menu-button {
         display: flex;
     }
+}
+
+@media (max-width: 768px) {
 
     .agent-info-page{
         flex-direction: column;

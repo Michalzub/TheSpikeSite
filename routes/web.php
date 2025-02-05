@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\SpikeSiteController;
@@ -13,7 +14,7 @@ Route::middleware(['auth'])->group( function () {
     Route::post('/discussion', [ForumController::class, 'store'])->name('discussion.store');
     Route::put('/discussion/{discussion}', [ForumController::class, 'update'])->name('discussion.update');
     Route::delete('/discussion/{discussion}', [ForumController::class, 'destroy'])->name('discussion.destroy');
-
+    Route::post('/discussions/{discussion}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::post('/vote', [ForumController::class, 'vote'])->name('forum.vote');
 });
 Route::get('/', [SpikeSiteController::class, 'index'])->name('wiki.index');
@@ -26,6 +27,8 @@ Route::get('/weapons/{name}', [SpikeSiteController::class, 'weaponDetails'])->na
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
 Route::get('/discussion/{discussion}', [ForumController::class, 'show'])->name('discussion.show');
+Route::get('/comments/{comment}/load-replies', [CommentController::class, 'loadReplies'])->name('comments.loadReplies');
+
 
 
 Route::middleware('auth')->group(function () {
