@@ -28,13 +28,15 @@ Route::get('/weapons/{name}', [SpikeSiteController::class, 'weaponDetails'])->na
 Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
 Route::get('/discussion/{discussion}', [ForumController::class, 'show'])->name('discussion.show');
 Route::get('/comments/{comment}/load-replies', [CommentController::class, 'loadReplies'])->name('comments.loadReplies');
-
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/favorite/{uuid}/{type}', [ProfileController::class, 'updateFavorite'])->name('favorite.update');
 });
 
 require __DIR__.'/auth.php';

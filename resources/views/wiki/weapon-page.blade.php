@@ -1,15 +1,14 @@
 <x-app-layout>
     <div class="main-page">
         <div class="home-container">
-            <h1>{{ $weapon['displayName'] }}</h1>
-            <div class="weapon-details">
-                <div class="weapon-image">
-                    <img src="{{ $weapon['displayIcon'] }}" alt="{{ $weapon['displayName'] }}">
-                </div>
+
+            <div class="home-box">
+                <h1>{{ $weapon['displayName'] }}</h1>
+                <img class="weapon-image" src="{{ $weapon['displayIcon'] }}" alt="{{ $weapon['displayName'] }}">
+
                 @if(isset($weapon['weaponStats']))
                     <div class="weapon-info">
                         <p><strong>Category:</strong> {{ Str::after($weapon['category'], '::') ?? 'N/A'  }}</p>
-
                         <p><strong>Cost:</strong> {{ $weapon['shopData']['cost'] ?? 'N/A'  }}</p>
                         <p><strong>Magazine Size:</strong> {{ $weapon['weaponStats']['magazineSize'] ?? 'N/A'  }}</p>
                         <p><strong>Fire Rate:</strong> {{ $weapon['weaponStats']['fireRate'] ?? 'N/A'  }} rounds per second</p>
@@ -19,9 +18,9 @@
                         <p><strong>Run Speed Multiplier:</strong> {{ $weapon['weaponStats']['runSpeedMultiplier'] ?? 'N/A'  }}</p>
                         <p><strong>Equip Time:</strong> {{ $weapon['weaponStats']['equipTimeSeconds'] ?? 'N/A'  }} seconds</p>
                         <p><strong>Damage Ranges:</strong></p>
-                        <ul>
+                        <ul class="weapon-range-list">
                             @foreach($weapon['weaponStats']['damageRanges'] as $range)
-                                <li>
+                                <li class="weapon-range">
                                     {{ $range['rangeStartMeters'] }}m - {{ $range['rangeEndMeters'] }}m:
                                     Head Damage: {{ $range['headDamage'] }},
                                     Body Damage: {{ $range['bodyDamage'] }},
@@ -31,22 +30,28 @@
                         </ul>
                     </div>
                 @else
-                    <p><strong>Weapon stats are not available for this weapon.</strong></p>
+                    <p class="no-stats-message"><strong>Weapon stats are not available for this weapon.</strong></p>
                 @endif
             </div>
-
-            <div class="weapon-skins">
-                @if(count($skins) > 0)
-                    <div class="image-gallery">
-                        <button class="prev" onclick="changeImage(-1)">&#10094;</button>
-                        <img id="skinImage" src="{{ $skins[0]['displayIcon'] }}" alt="Weapon Skin">
-                        <p id="skinName" class="skin-name">{{ $skins[0]['displayName'] }}</p>
-                        <button class="next" onclick="changeImage(1)">&#10095;</button>
-                    </div>
-                @else
-                    <p>No skins available for this weapon.</p>
-                @endif
+            <div class="favorite-button">
+                <button class="favorite-btn" id="favorite-btn" data-uuid="{{ $weapon['uuid'] }}" data-type="weapon" data-displayName="{{$weapon['displayName']}}" data-imageUrl="{{$weapon['displayIcon']}}">
+                    @if(auth()->check() && auth()->user()->favorites->contains('uuid', $weapon['uuid']))
+                        Unfavorite
+                    @else
+                        Favorite
+                    @endif
+                </button>
             </div>
+            @if(count($skins) > 0)
+                <div class="weapon-skins">
+                    <button class="prev-skin-btn" onclick="changeImage(-1)">&#10094;</button>
+                    <img class="skin-img" id="skinImage" src="{{ $skins[0]['displayIcon'] }}" alt="Weapon Skin">
+                    <button class="next-skin-btn" onclick="changeImage(1)">&#10095;</button>
+                </div>
+                <p class="skin-name" id="skinName" class="skin-name">{{ $skins[0]['displayName'] }}</p>
+            @else
+                <p>No skins available for this weapon.</p>
+            @endif
         </div>
     </div>
 </x-app-layout>

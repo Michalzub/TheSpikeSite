@@ -14,8 +14,8 @@
             @enderror
             <input type="file" name="image" accept="image/png, image/jpeg, image/jpg, image/gif">
             <div class="note-buttons">
-                <a href="{{ route('forum.index') }}">Cancel</a>
-                <button type="submit">Submit</button>
+                <button class="cancel-btn" href="{{ route('forum.index') }}">Cancel</button>
+                <button class="submit-btn" type="submit">Submit</button>
             </div>
         </form>
 

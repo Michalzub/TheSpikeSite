@@ -10,19 +10,11 @@ function toggleReplyForm(commentId) {
     var replyForm = document.getElementById('reply-form-' + commentId);
     var replyButton = document.getElementById('reply-btn-' + commentId);
 
-    console.log('Toggling reply form for comment:', commentId);
-    console.log('Reply form element:', replyForm);
-    console.log('Reply button element:', replyButton);
-
-    if (!replyForm || !replyButton) {
-        console.error('Reply form or button not found!');
-        return;
-    }
-
     if (replyForm.style.display === 'none' || replyForm.style.display === '') {
         replyForm.style.display = 'block';
         replyButton.style.display = 'none';
     } else {
+        console.log('should show up');
         replyForm.style.display = 'none';
         replyButton.style.display = 'inline-block';
     }
@@ -30,14 +22,10 @@ function toggleReplyForm(commentId) {
 
 function attachReplyButtonListeners() {
     const replyButtons = document.querySelectorAll('.reply-btn');
-    console.log('Found reply buttons:', replyButtons);
 
     replyButtons.forEach(button => {
-        console.log('Attaching listener to button:', button);
         button.addEventListener('click', function () {
-            // Extract the commentId from the button's id
             const commentId = this.id.replace('reply-btn-', '');
-            console.log('Reply button clicked for comment:', commentId);
             toggleReplyForm(commentId);
         });
     });
@@ -47,26 +35,18 @@ function attachCloseButtonListeners() {
     const closeButtons = document.querySelectorAll('.close-btn');
     closeButtons.forEach(button => {
         button.addEventListener('click', function () {
-            const commentId = this.id.split('-').pop();
+            const commentId = this.id.replace('reply-btn-', '');
             toggleReplyForm(commentId);
         });
     });
 }
 
-function attachLoadRepliesButtonListeners() {
-    const loadRepliesButtons = document.querySelectorAll('.load-replies-btn');
-    loadRepliesButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const commentId = this.id.split('-').pop();
-            loadReplies(commentId);
-        });
-    });
-}
+attachReplyButtonListeners();
+attachCloseButtonListeners();
 
 document.addEventListener('DOMContentLoaded', function () {
     attachReplyButtonListeners();
     attachCloseButtonListeners();
-    attachLoadRepliesButtonListeners();
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -97,11 +77,16 @@ function loadReplies(commentId) {
     var loadRepliesButton = document.getElementById('load-replies-btn-' + commentId);
 
     if (repliesContainer.style.display === 'block') {
+        repliesContainer.style.display = 'none';
+        loadRepliesButton.textContent = 'Show Replies';
         return;
     }
 
-    repliesContainer.style.display = 'block';
-    if (loadRepliesButton) loadRepliesButton.style.display = 'none';
+    if (repliesContainer.children.length > 0) {
+        repliesContainer.style.display = 'block';
+        loadRepliesButton.textContent = 'Hide Replies';
+        return;
+    }
 
     fetch(`/comments/${commentId}/load-replies`)
         .then(response => response.json())
@@ -163,6 +148,9 @@ function loadReplies(commentId) {
 
                 repliesContainer.appendChild(replyDiv);
             });
+
+            repliesContainer.style.display = 'block';
+            loadRepliesButton.textContent = 'Hide Replies';
         })
         .catch(error => {
             console.error('Error loading replies:', error);
@@ -384,3 +372,57 @@ function attachCommentEventListeners(commentId) {
         });
     }
 }
+
+//favourites
+
+document.addEventListener('DOMContentLoaded', function() {
+    var favoriteButton = document.getElementById('favorite-btn');
+
+    if (favoriteButton) {
+        favoriteButton.addEventListener('click', function(event) {
+            var uuid = event.target.getAttribute('data-uuid'); // Get UUID
+            var type = event.target.getAttribute('data-type'); // Get Type
+            var button = event.target; // The button itself
+
+            // Make AJAX request
+            fetch('/favorite/' + uuid + '/' + type, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({
+                    uuid: uuid,
+                    type: type,
+                })
+            })
+                .then(response => {
+                    if (response.redirected) {
+                        if (response.url.includes('/login')) {
+                            window.location.href = '/login';
+                            throw new Error('Redirected to login page');
+                        }
+                    }
+                    if (!response.ok) {
+                        if (response.status === 401) {
+                            window.location.href = '/login';
+                        } else {
+                            throw new Error('Could not process the favorite');
+                        }
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Update the button text based on the response
+                    if (data.message === 'Added to favorites') {
+                        button.innerText = 'Unfavorite'; // Change button text to 'Unfavorite'
+                    } else {
+                        button.innerText = 'Favorite'; // Change button text to 'Favorite'
+                    }// Show the response message
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    }
+});

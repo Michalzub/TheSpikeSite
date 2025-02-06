@@ -31,7 +31,7 @@
                         <button type="button" class="close-btn" id="close-btn-{{ $comment->id }}">X</button>
                         <form action="/comments/store" method="POST">
                             @csrf
-                            <input type="hidden" name="parent_id" value="1">
+                            <input type="hidden" name="parent_id" value="{{ $comment->id }}">
                             <textarea name="text" rows="3" placeholder="Write your reply..." required></textarea>
                             <button type="submit">Reply</button>
                         </form>

@@ -11,8 +11,8 @@
         <a class="nav-item {{ Route::is('wiki.maps') ? 'active' : '' }}" href = "{{ route('wiki.maps') }}">Maps</a>
         <a class="nav-item {{ Route::is('wiki.weapons') ? 'active' : '' }}" href = "{{ route('wiki.weapons') }}">Weapons</a>
         <a class="nav-item {{ Route::is('forum.index') ? 'active' : '' }}" href = "{{ route('forum.index') }}">Forum</a>
-        <a class="nav-item {{ Route::is('profile.edit') ? 'active' : '' }}" href = "{{ route('profile.edit') }}">Profile</a>
         @if(auth()->check())
+            <a class="nav-item {{ Route::is('profile.show') ? 'active' : '' }}" href="{{ route('profile.show', Auth::user()->id) }}">Profile</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a class="nav-item" :href="route('logout')"

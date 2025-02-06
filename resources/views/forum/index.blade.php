@@ -3,7 +3,7 @@
         <div class="home-container">
             <div>
                 <h1>Discussion posts</h1>
-                <a href="{{route("discussion.create")}}" class="">
+                <a class="new-discussion-btn" href="{{route("discussion.create")}}" class="">
                     New discussion
                 </a>
             </div>

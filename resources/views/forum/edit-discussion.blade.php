@@ -4,17 +4,17 @@
         <form action="{{ route('discussion.update', $discussion) }}" method="POST" class="">
             @csrf
             @method('PUT')
-            <input name="title" placeholder="Enter the title here" required>{{ $discussion->title }}</input>
+            <input name="title" placeholder="Enter the title here" value="{{ $discussion->title }}" required=""></input>
             @error('title')
             <div class="error">{{ $message }}</div>
             @enderror
-            <textarea name="text" rows="10" class="" placeholder="Enter your text here" required>{{ $discussion->text }}</textarea>
+            <textarea name="text" rows="10" class="" placeholder="Enter your text here" required="">{{ $discussion->text }}</textarea>
             @error('text')
             <div class="error">{{ $message }}</div>
             @enderror
             <div class="">
-                <a href="{{ route('forum.index') }}" class="">Cancel</a>
-                <button class="">Submit</button>
+                <button class="cancel-btn" href="{{ route('forum.index') }}">Cancel</button>
+                <button class="submit-btn">Submit</button>
             </div>
         </form>
     </div>

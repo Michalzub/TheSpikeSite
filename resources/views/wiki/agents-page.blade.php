@@ -15,6 +15,13 @@
                         {{ $agent['description'] }}
                     </p>
                 </div>
+                <button class="favorite-btn" id="favorite-btn" data-uuid="{{ $agent['uuid'] }}" data-type="agent" data-displayName="{{$agent['displayName']}}" data-imageUrl="{{$agent['displayIcon']}}">
+                    @if(auth()->check() && auth()->user()->favorites->contains('uuid', $agent['uuid']))
+                        Unfavorite
+                    @else
+                        Favorite
+                    @endif
+                </button>
             </div>
             <div class="agent-sidebar">
                 <div class="sidebar-header">

@@ -17,6 +17,16 @@ body{
     justify-content: center;
 }
 
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* =========================== */
+/*     NAVBAR TOPBAR CSS       */
+/* =========================== */
+
 nav.topbar{
     background: black;
     height: 60px;
@@ -78,6 +88,9 @@ nav.topbar .nav-item.active {
     white-space: nowrap;
 }
 
+/* =========================== */
+/*     COMMON PAGE STYLING     */
+/* =========================== */
 .main-page{
     display: flex;
     flex-direction: column;
@@ -116,6 +129,10 @@ nav.topbar .nav-item.active {
 h1{
     font-size: 3rem;
 }
+
+/* =========================== */
+/*     WIKI HOME PAGE CSS      */
+/* =========================== */
 
 .welcome-message{
     font-weight: bold;
@@ -166,10 +183,14 @@ h1{
     border: 2px solid white;
 }
 
+/* =========================== */
+/*     ITEM PREVIEW GRIDS      */
+/* =========================== */
+
 .item-preview-grid{
     display: flex;
     justify-content: center;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 10px;
     width: 90%;
     margin-bottom: 20px;
@@ -186,7 +207,20 @@ h1{
     width: 200px;
     max-width: 200px;
     max-height: 200px;
+    border: none;
+    outline: none;
 }
+
+.icon-button:hover{
+    outline: 2px solid white;
+}
+
+.icon-button:active {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
 .button-image{
     width: 100%;
     height: 100%;
@@ -207,7 +241,10 @@ h1{
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
-
+/* =========================== */
+/*  GRIDS FOR CATEGORY PAGES   */
+/* =========================== */
+/*agent grid*/
 .agent-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -242,7 +279,7 @@ h1{
     object-fit: cover;
     z-index: 2;
 }
-
+/*weapon grid*/
 .weapon-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -260,7 +297,56 @@ h1{
 .weapon-preview:hover{
     border: 3px solid white;
 }
+/*map grid*/
+.map-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    justify-content: center;
+    gap: 5px;
+}
+.map-preview{
+    position: relative;
+    background: var(--home-box-color);
+    height: 390px;
+    overflow: hidden;
+}
 
+.map-preview:hover{
+    border: 3px solid white;
+}
+
+/* =========================== */
+/*     INDIVIDUAL PAGES        */
+/* =========================== */
+
+.favorite-btn {
+    background: var(--home-box-color);
+    color: white;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.favorite-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/*universal*/
+.favorite-btn:hover {
+    background: var(--main-page-color);
+}
+
+.favorite-btn:active {
+    border: none;
+}
+/*agent specific*/
 .agent-info-page{
     display: flex;
     justify-content: space-between;
@@ -320,16 +406,12 @@ h1{
 .agent-info-image{
     width: 100%;
     height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    left: 50%;
     object-fit: cover;
 }
 
 .abilities-info{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -348,63 +430,134 @@ h1{
     margin: 0 15px 15px 15px;
 }
 
-.weapon-details {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin: 20px;
-}
-
+/*weapon specific*/
 .weapon-image img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Weapon Details Page Styling */
+.weapon-image {
+    margin-bottom: 20px;
 }
 
 .weapon-info {
-    max-width: 60%;
-    margin-left: 20px;
-}
-
-.weapon-info h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Rubik", sans-serif;
 }
 
 .weapon-info p {
     font-size: 1.1rem;
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
-.weapon-info ul {
+.weapon-info strong {
+    color: var(--main-page-color);
+}
+
+.weapon-range-list {
     list-style-type: none;
     padding-left: 0;
 }
 
-.weapon-info ul li {
-    font-size: 1rem;
-    margin: 3px 0;
+.no-stats-message {
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
 }
 
-
-.map-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    justify-content: center;
-    gap: 5px;
+.weapon-skins {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 30px;
 }
-.map-preview{
-    position: relative;
+
+.skin-img {
+    max-width: 100%;
+    max-height: 200px;
+    min-height: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 15px;
+}
+
+.skin-name {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.prev-skin-btn, .next-skin-btn {
+    background: none;
+    color: white;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.prev-skin-btn:hover, .next-skin-btn:hover {
+    color: var(--main-page-color);
+}
+
+.prev-skin-btn:active, .next-skin-btn:active {
+    color: var(--main-page-color);
+}
+
+/*map specific*/
+.map-splash {
+    width: 100%;
+    padding: 10px;
+}
+.favorite-button-map .favorite-btn  {
+    width: 100%;
+}
+
+/* =========================== */
+/*     FORUM CSS               */
+/* =========================== */
+
+.new-discussion-btn {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.cancel-btn {
     background: var(--home-box-color);
-    height: 390px;
-    overflow: hidden;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
 }
 
-.map-preview:hover{
-    border: 3px solid white;
+.submit-btn {
+    background: var(--main-page-color);
+    color: white;
+    font-family: "Rubik", sans-serif;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
 }
 
+.cancel-btn:hover {
+    outline: 2px solid white;
+}
+.submit-btn:hover {
+    outline: 2px solid white;
+}
 
 .discussion-preview{
     outline: 2px solid white;
@@ -420,7 +573,7 @@ h1{
 .discussion-preview-text{
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
 }
@@ -434,27 +587,24 @@ h1{
     padding-bottom: 5px;
 }
 
+input, textarea {
+    background-color: var(--home-box-color);
+    border: 2px solid white;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    width: 100%;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--main-page-color);
+}
+
 .hr{
     margin-top: 0;
-}
-
-.guest{
-    display: flex;
-    justify-content: center;
-}
-
-.login-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    font-family: "Rubik", sans-serif;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 30px;
-    width: 100%;
-    max-width: 1000px;
-    align-items: start;
 }
 
 .pagination-nav{
@@ -490,10 +640,6 @@ h1{
     display: flex;
 }
 
-
-.discussion-preview-edit-actions form{
-    display: inline;
-}
 
 @media (max-width: 824px) {
     .nav-items {
@@ -556,12 +702,12 @@ h1{
     }
 
     .ability-info {
-        flex-direction: column; /* Stack image above text */
+        flex-direction: column;
         align-items: center;
         text-align: center;
     }
 
     .ability-image {
-        margin-bottom: 10px; /* Optional: adds space between image and text */
+        margin-bottom: 10px;
     }
 }
