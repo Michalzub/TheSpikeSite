@@ -60,8 +60,8 @@ class ForumController extends Controller
 
     public function edit(Discussion $discussion)
     {
-        if ($discussion->author_id !== auth()->id()) {
-            abort(403, 'You are not authorized to delete this discussion.');
+        if ($discussion->author_id !== auth()->id() ) {
+            abort(403, 'You are not authorized to edit this discussion.');
         }
         return view('forum.edit-discussion', ['discussion' => $discussion]);
     }
@@ -81,7 +81,7 @@ class ForumController extends Controller
 
     public function destroy(Discussion $discussion)
     {
-        if ($discussion->author_id !== auth()->id()) {
+        if ($discussion->author_id !== auth()->id() && auth()->user()->role !== 'admin') {
             abort(403, 'You are not authorized to delete this discussion.');
         }
 

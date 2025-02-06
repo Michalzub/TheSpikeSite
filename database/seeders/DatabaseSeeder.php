@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
+            'role' => 'user',
         ]);
 
         $user2 = User::factory()->create([
@@ -29,6 +30,15 @@ class DatabaseSeeder extends Seeder
             'name' => 'Dios Mio',
             'email' => 'dios@example.com',
             'password' => bcrypt('dios'),
+            'role' => 'user',
+        ]);
+
+        $user2 = User::factory()->create([
+            'id' => 69,
+            'name' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('admin'),
+            'role' => 'admin',
         ]);
 
         Discussion::factory(5)->create([

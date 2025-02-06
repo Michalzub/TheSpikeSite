@@ -23,7 +23,7 @@
                     <p>{{ $comment->text }}</p>
                     <small>Posted on {{ $comment->created_at->format('j. n. Y H:i:s') }}</small>
 
-                    @if(auth()->id() == $comment->author_id)
+                    @if(auth()->id() == $comment->author_id || auth()->user()->role === 'admin')
                         <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" class="delete-comment-form">
                             @csrf
                             @method('DELETE')

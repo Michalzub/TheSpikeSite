@@ -29,7 +29,7 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
-        if (auth()->id() !== $comment->author_id) {
+        if (auth()->id() !== $comment->author_id && auth()->user()->role !== 'admin') {
             return redirect()->back()->with('error', 'You are not authorized to delete this comment.');
         }
 
