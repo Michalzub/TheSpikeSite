@@ -6,7 +6,7 @@
             <div class="agent-main-info">
                 <div class="agent-quote">
                     <p>
-                        <span class="quote-text"> "Wind go brrrrrrr."</span> <br>
+                        <span class="quote-text">"{{$agent['abilities'][0]['displayName']}}"</span> <br>
                         <span class="quote-author"> -{{ $agent['displayName'] }}</span>
                     </p>
                 </div>
