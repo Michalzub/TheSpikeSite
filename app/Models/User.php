@@ -56,27 +56,4 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Favorite::class);
     }
 
-    // User.php Model
-    public function favoriteAgents()
-    {
-        return $this->belongsToMany(Agent::class);
-    }
-
-    public function favoriteMaps()
-    {
-        return $this->belongsToMany(Map::class);
-    }
-
-    public function favoriteWeapons()
-    {
-        return $this->belongsToMany(Weapon::class);
-    }
-
-    public function posts()
-    {
-        return $this->hasMany(Discussion::class);
-    }
-
-
-
 }

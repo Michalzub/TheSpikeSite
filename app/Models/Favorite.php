@@ -11,6 +11,5 @@ class Favorite extends Model
 
     protected $primaryKey = ['user_id', 'uuid', 'type'];
 
-    // Define the fillable attributes for mass assignment
     protected $fillable = ['user_id', 'uuid', 'type', 'display_name','image_url'];
 }

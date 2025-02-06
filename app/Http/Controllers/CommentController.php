@@ -11,22 +11,31 @@ class CommentController extends Controller
     public function store(Request $request, Discussion $discussion)
     {
         $request->validate([
-            'text' => 'required',
+            'text' => 'required|string|max:1000',
         ]);
 
         $comment = new Comment();
         $comment->text = $request->input('text');
         $comment->author_id = auth()->id();
         $comment->discussion_id = $discussion->id;
-        $comment->parent_id = $request->input('parent_id');
         $comment->save();
 
         return response()->json([
             'success' => true,
             'comment' => $comment->load('author'),
+            'current_user_id' => auth()->id()
         ]);
     }
 
+    public function destroy(Comment $comment)
+    {
+        if (auth()->id() !== $comment->author_id) {
+            return redirect()->back()->with('error', 'You are not authorized to delete this comment.');
+        }
+
+        $comment->delete();
+        return redirect()->back()->with('success', 'Comment deleted successfully.');
+    }
 
     public function index(Discussion $discussion)
     {
@@ -34,23 +43,5 @@ class CommentController extends Controller
 
         return view('discussion.show', compact('discussion', 'comments'));
     }
-
-    public function loadReplies($commentId)
-    {
-        $comment = Comment::with('children.author')->findOrFail($commentId);
-
-        return response()->json([
-            'replies' => $comment->children->map(function ($reply) {
-                return [
-                    'id' => $reply->id,
-                    'author' => $reply->author->name,
-                    'text' => $reply->text,
-                    'created_at' => $reply->created_at->format('M d, Y H:i')
-                ];
-            })
-        ]);
-    }
-
-
 
 }

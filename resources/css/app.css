@@ -60,24 +60,6 @@ nav.topbar .nav-item.active {
     color: var(--main-page-color);
 }
 
-/*menu button + line som našiel*/
-.menu-button {
-    display: none;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 15px;
-}
-.line {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    margin: 3px 0;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
 .logo{
     padding: 0 2rem;
     font-family: "Rubik", sans-serif;
@@ -476,10 +458,14 @@ h1{
     margin-top: 30px;
 }
 
+.skin-img-div {
+    max-width: 80%;
+    min-height: 200px;
+}
+
 .skin-img {
     max-width: 100%;
     max-height: 200px;
-    min-height: 200px;
     height: auto;
     border-radius: 8px;
     margin: 0 15px;
@@ -513,6 +499,12 @@ h1{
     width: 100%;
     padding: 10px;
 }
+
+.map-display-icon {
+    width: 100%;
+
+}
+
 .favorite-button-map .favorite-btn  {
     width: 100%;
 }
@@ -642,7 +634,7 @@ input:focus, textarea:focus {
 
 
 @media (max-width: 824px) {
-    .nav-items {
+    .logo {
         display: none;
     }
 
@@ -711,3 +703,135 @@ input:focus, textarea:focus {
         margin-bottom: 10px;
     }
 }
+
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    background: var(--home-box-color);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.comment-form textarea {
+    background: var(--home-container-color);
+}
+
+.comment-form textarea:focus {
+    border-color: var(--main-page-color);
+}
+
+.comment-form button {
+    background: var(--main-page-color);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background: white;
+    color: var(--main-page-color);
+}
+
+.comment-box {
+    background: var(--home-box-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.comment-box strong {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.comment-box p {
+    color: white;
+    margin-top: 5px;
+}
+
+.comment-box small {
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.profile-favourite {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.discussion-link {
+    font-family: "Rubik", sans-serif;
+    font-size: 1.2rem;
+    color: var(--main-page-color);
+    display: inline-block;
+}
+
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.x-text-input, .btn-primary {
+    background-color: white;
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: var(--main-page-color);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.x-input-error {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
+
+label {
+    color: #fff;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.discussion-info {
+    margin-top: 10px;
+    background: var(--home-box-color);
+}
+
+.discussion-img {
+    max-width: 50%;
+    margin-top: 10px;
+
+}
+
+.discussion-text {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+

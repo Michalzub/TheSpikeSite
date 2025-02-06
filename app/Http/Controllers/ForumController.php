@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class ForumController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
 
@@ -27,17 +24,11 @@ class ForumController extends Controller
         return view('forum.index', ['discussions' => $discussions]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('forum.create-discussion');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -61,18 +52,12 @@ class ForumController extends Controller
         return to_route('discussion.show', $discussion)->with('message', 'Discussion created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Discussion $discussion)
     {
 
         return view('forum.discussion', ['discussion' => $discussion]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Discussion $discussion)
     {
         if ($discussion->author_id !== auth()->id()) {
@@ -81,9 +66,6 @@ class ForumController extends Controller
         return view('forum.edit-discussion', ['discussion' => $discussion]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Discussion $discussion)
     {
         $data = $request->validate([
@@ -97,19 +79,14 @@ class ForumController extends Controller
         return to_route('discussion.show', $discussion)->with('message', 'Discussion updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Discussion $discussion)
     {
         if ($discussion->author_id !== auth()->id()) {
             abort(403, 'You are not authorized to delete this discussion.');
         }
 
-        // Delete the discussion
         $discussion->delete();
 
-        // Redirect to the forum index with a success message
         return redirect()->route('forum.index')->with('message', 'Discussion deleted successfully!');
     }
 

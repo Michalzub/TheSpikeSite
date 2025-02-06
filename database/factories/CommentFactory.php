@@ -21,7 +21,6 @@ class CommentFactory extends Factory
     {
         return [
             'discussion_id' => Discussion::all()->random()->id,
-            'parent_id' => $this->faker->randomElement([null, Comment::factory()]),
             'author_id' => User::all()->random()->id,
             'text' => $this->faker->sentence(),
 

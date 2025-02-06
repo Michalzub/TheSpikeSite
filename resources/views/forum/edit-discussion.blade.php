@@ -4,7 +4,7 @@
         <form action="{{ route('discussion.update', $discussion) }}" method="POST" class="">
             @csrf
             @method('PUT')
-            <input name="title" placeholder="Enter the title here" value="{{ $discussion->title }}" required=""></input>
+            <input name="title" placeholder="Enter the title here" value="{{ $discussion->title }}" required="">
             @error('title')
             <div class="error">{{ $message }}</div>
             @enderror
@@ -13,7 +13,7 @@
             <div class="error">{{ $message }}</div>
             @enderror
             <div class="">
-                <button class="cancel-btn" href="{{ route('forum.index') }}">Cancel</button>
+                <a class="cancel-btn" href="{{ route('forum.index') }}">Cancel</a>
                 <button class="submit-btn">Submit</button>
             </div>
         </form>

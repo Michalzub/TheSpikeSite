@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId("discussion_id")->constrained('discussions')->cascadeOnDelete();
             $table->foreignId("parent_id")->nullable()->constrained('comments')->cascadeOnDelete();
             $table->index('discussion_id');
-            $table->index('parent_id');
             $table->foreignId('author_id')->nullable()->constrained('users')->nullOnDelete();
             $table->text('text');
             $table->timestamps();

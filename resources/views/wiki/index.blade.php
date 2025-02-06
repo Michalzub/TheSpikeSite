@@ -14,10 +14,6 @@
                     Set in a near-future Earth, you team up with 4 other players against 5 enemies in round-based combat with an agent of your choice.
                     Creativity is your greatest weapon.
                 </p>
-                <div class="search-bar">
-                    <input type="text" class="search-input">
-                    <button class="search-button">Search</button>
-                </div>
             </div>
             <div class="home-box">
                 <h2>Agents</h2>

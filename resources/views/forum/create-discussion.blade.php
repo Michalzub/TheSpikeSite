@@ -7,14 +7,13 @@
             @error('title')
             <div class="error">{{ $message }}</div>
             @enderror
-
             <textarea name="text" rows="10" placeholder="Enter your text here" required></textarea>
             @error('text')
             <div class="error">{{ $message }}</div>
             @enderror
             <input type="file" name="image" accept="image/png, image/jpeg, image/jpg, image/gif">
-            <div class="note-buttons">
-                <button class="cancel-btn" href="{{ route('forum.index') }}">Cancel</button>
+            <div>
+                <a class="cancel-btn" href="{{ route('forum.index') }}">Cancel</a>
                 <button class="submit-btn" type="submit">Submit</button>
             </div>
         </form>
