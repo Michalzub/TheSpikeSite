@@ -27,7 +27,6 @@ class SpikeSiteController extends Controller
     }
 
 
-    //TODO FIX DUPLICITY OF GET
     public function agentDetails($name)
     {
         $agents = session('agents');

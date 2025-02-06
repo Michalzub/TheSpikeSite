@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
 use App\Models\Favorite;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Http;
 
 class ProfileController extends Controller
 {
@@ -24,6 +25,37 @@ class ProfileController extends Controller
             $agents = $response->json()['data'];
 
             session(['agents' => $agents]);
+        }
+
+        $weapons = session('weapons');
+
+        if (!$weapons) {
+            $response = Http::get('https://valorant-api.com/v1/weapons');
+
+            $weapons = collect($response->json()['data'])->map(function($weapon) {
+                unset($weapon['skins']);
+                return $weapon;
+            });
+            session(['weapons' => $weapons]);
+        }
+
+        $maps = session('maps');
+
+        if (!$maps) {
+            $response = Http::get('https://valorant-api.com/v1/maps');
+
+            $maps = $response->json()['data'];
+
+            $excludedMapNames = ['The Range', 'Basic Training'];
+            foreach ($maps as $key => $map) {
+                if (in_array($map['displayName'], $excludedMapNames)) {
+                    unset($maps[$key]);
+                }
+            }
+
+            $maps = array_values($maps);
+
+            session(['maps' => $maps]);
         }
 
 
