@@ -419,7 +419,6 @@ h1{
     border-radius: 8px;
 }
 
-/* Weapon Details Page Styling */
 .weapon-image {
     margin-bottom: 20px;
 }
@@ -633,6 +632,24 @@ input:focus, textarea:focus {
 }
 
 
+.discussion-info {
+    margin-top: 10px;
+    background: var(--home-box-color);
+}
+
+.discussion-img {
+    max-width: 50%;
+    margin-top: 10px;
+
+}
+
+.discussion-text {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+
+
 @media (max-width: 824px) {
     .logo {
         display: none;
@@ -775,6 +792,9 @@ input:focus, textarea:focus {
     display: inline-block;
 }
 
+/* =========================== */
+/*     LOGIN PAGE ****         */
+/* =========================== */
 
 .login-box {
     display: flex;
@@ -817,21 +837,5 @@ label {
 
 .text-center {
     text-align: center;
-}
-
-.discussion-info {
-    margin-top: 10px;
-    background: var(--home-box-color);
-}
-
-.discussion-img {
-    max-width: 50%;
-    margin-top: 10px;
-
-}
-
-.discussion-text {
-    margin-top: 10px;
-    font-size: 1rem;
 }
 
