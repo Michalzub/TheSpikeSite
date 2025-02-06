@@ -34,7 +34,7 @@
                             <span id="net-votes-{{ $discussion->id }}">{{ $discussion->net_votes }}</span>
                         </div>
                         <div class="discussion-preview-edit-action">
-                            @if(auth()->id() == $discussion->author_id || auth()->user()->role == 'admin')
+                            @if(auth()->id() == $discussion->author_id || (auth()->check() && auth()->user()->role === 'admin'))
                                 <button class="discussion-preview-edit-action" type="submit" onclick="window.location='{{route('discussion.edit', $discussion) }}'">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
                                          class="bi bi-chat-dots" viewBox="0 0 16 16">

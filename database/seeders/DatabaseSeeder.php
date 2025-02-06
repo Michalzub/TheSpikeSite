@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'user',
         ]);
 
-        $user2 = User::factory()->create([
+        $user3 = User::factory()->create([
             'id' => 69,
             'name' => 'admin',
             'email' => 'admin@example.com',
@@ -45,6 +45,14 @@ class DatabaseSeeder extends Seeder
             'author_id' => $user2->id,
         ]);
 
-        Comment::factory(30)->create();
+        Discussion::factory(8)->create([
+            'author_id' => $user1->id,
+        ]);
+
+        Discussion::factory(8)->create([
+            'author_id' => $user3->id,
+        ]);
+
+        Comment::factory(40)->create();
     }
 }
